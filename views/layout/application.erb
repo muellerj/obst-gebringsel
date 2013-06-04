@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Institut für Rehabilitation</title>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=<%= settings.googlemaps_api_key %>&sensor=false"></script>
+    <%= stylesheet_tag 'application' %>
+    <%= javascript_tag 'application' %>
+  </head>
+  <body>
+
+    <div id="logo">
+      <%= image_tag "logo.png" %>
+    </div>
+
+    <div id="container">
+      <div id="nav">
+        <ul>
+          <% static_pages.each do |category| %>
+            <li>
+              <%= link_to category[:title],
+                category[:permalink],
+                class: "nav_title" %><br />
+              <%= link_to category[:subtitle],
+                category[:permalink],
+                class: "nav_subtitle" %>
+              <ul>
+                <% category[:pages].each do |name, permalink| %>
+                  <li><%= link_to name, permalink, class: "nav_link" %></li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div id="content">
+        <%= yield %>
+
+        <div id="footer">
+          <%= link_to "Institut für Rehabilitation", "/" %> &copy; <%= Time.now.year %><br />
+          All rights reserved.
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
