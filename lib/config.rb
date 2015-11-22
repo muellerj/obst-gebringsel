@@ -9,10 +9,10 @@ class App
     serve "/fonts",  from: "assets/fonts"
 
     js :application, [
-      "/js/application.js",
-      "/js/jquery.fancybox.min.js",
       "/js/jquery.min.js",
-      "/js/typekit.min.js"
+      "/js/jquery.fancybox.min.js",
+      "/js/typekit.min.js",
+      "/js/application.js"
     ]
 
     css :application, [
