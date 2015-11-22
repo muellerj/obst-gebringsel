@@ -1,1 +1,6 @@
 export RACK_ENV="development"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby $(cat .ruby-version)
