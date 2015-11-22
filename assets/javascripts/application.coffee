@@ -6,4 +6,3 @@
 jQuery ->
   # $("a:has(img)").fancybox()
   $("a.fancybox").fancybox()
-  Typekit.load()
