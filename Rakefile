@@ -1,17 +1,10 @@
-require 'rake/testtask'
-require 'sinatra/asset_pipeline/task.rb'
-require_relative 'app'
+APP_FILE  = 'app.rb'
+APP_CLASS = 'App'
+
+require 'sinatra/assetpack/rake'
 
 # Default task
-task default: :test
-
-# ... is testing
-Rake::TestTask.new do |t|
-  t.pattern = 'test/**/*_test.rb'
-end
-
-# Assets precompilation task
-Sinatra::AssetPipeline::Task.define! App
+task default: :spec
 
 # Heroku deployment
 desc "Deploy to Heroku and compile assets"

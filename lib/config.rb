@@ -11,13 +11,14 @@ class App
     js :application, [
       "/js/jquery.min.js",
       "/js/jquery.fancybox.min.js",
-      "/js/application.js"
+      "/js/base.js"
     ]
 
     css :application, [
       "/css/fancybox.css",
       "/css/pure-min.css",
-      "/css/marketing.css"
+      "/css/marketing.css",
+      "/css/base.css"
     ]
 
     js_compression  :jsmin
