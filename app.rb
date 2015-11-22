@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require :default, :assets, (ENV['RACK_ENV'] || '').to_sym
 require 'sinatra/base'
-require 'sinatra/asset_pipeline'
+require 'sinatra/assetpack'
 
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__)

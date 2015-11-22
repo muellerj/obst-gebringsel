@@ -2,16 +2,26 @@ class App
   # Use utf-8 wherever possible
   set :default_encoding, 'utf-8'
 
-  # Use erb templates for markdown rendering
-  set :markdown, layout_engine: :erb
+  assets do
+    serve "/js",     from: "assets/javascripts"
+    serve "/css",    from: "assets/stylesheets"
+    serve "/images", from: "assets/images"
+    serve "/fonts",  from: "assets/fonts"
 
-  # Define assets to be precompiled
-  set :assets_precompile, %w(
-    application.js
-    application.css
-    *.jpg
-    *.png
-    *.gif
-  )
+    js :application, [
+      "/js/application.js",
+      "/js/jquery.fancybox.min.js",
+      "/js/jquery.min.js",
+      "/js/typekit.min.js"
+    ]
 
+    css :application, [
+      "/css/fancybox.css",
+      "/css/pure-min.css",
+      "/css/marketing.css"
+    ]
+
+    js_compression  :jsmin
+    css_compression :simple
+  end
 end
