@@ -1,4 +1,8 @@
-require './app'
+require 'sprockets'
+require './application'
 
-# Run the shizzle!
-run App
+map '/assets' do
+  run Application.assets
+end
+
+run Application
