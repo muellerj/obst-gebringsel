@@ -6,11 +6,13 @@ gem "haml"
 gem "thin"
 
 group :assets do
-  gem "sinatra-assetpack", :require => "sinatra/assetpack"
-  gem "sass"
-  gem "coffee-script"
   gem "rake"
+  gem "sprockets"
+  gem "sprockets-helpers"
+  gem "sass"
   gem "bourbon"
+  gem "coffee-script"
+  gem "uglifier"
 end
 
 group :test do
