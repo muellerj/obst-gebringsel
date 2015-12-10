@@ -3,13 +3,14 @@ require_relative "spec_helper"
 RSpec.describe "SASS compilation" do
 
   before do
-    system "rake assets:precompile > /dev/null"
+    system("rm -rf public")
+    system("rake assets > /dev/null 2>&1")
   end
 
-  let(:filecontent) { File.read(File.join(__dir__, "../public/assets/application.css")) }
+  let(:stylesheet_file) { Dir.glob("#{__dir__}/../public/assets/application-*.css").first }
 
   it "must have some of the correct content" do
-    expect(filecontent).to include "/* Application Stylesheet File"
+    expect(File.read(stylesheet_file)).to include ".application-stylesheet-file"
   end
 
 end
