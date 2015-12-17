@@ -27,16 +27,14 @@ Rake::SprocketsTask.new do |t|
 end
 
 task :assets do
-  assets = Dir.glob(File.join(__dir__, 'public/assets/**/*'))
-  regex = /(-{1}[a-z0-9]{32}*\.{1}){1}/
-  assets.each do |file|
-    next if File.directory?(file) || file !~ regex
+  fingerprint = /\-[0-9a-f]{32}*\./
+  Dir["public/assets/**/*"].each do |file|
+    next if file !~ fingerprint
+    next if File.directory?(file)
+    next if file.split(File::Separator).last =~ /^manifest/
 
-    source = file.split('/')
-    source.push(source.pop.gsub(regex, '.'))
-
-    non_digested = File.join(source)
-    FileUtils.cp(file, non_digested)
+    nondigest = file.sub(fingerprint, '.')
+    FileUtils.cp(file, nondigest, verbose: true)
   end
 end
 
