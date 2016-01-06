@@ -30,7 +30,7 @@ class Application < Sinatra::Base
   end
 
   get '/' do
-    haml :welcome
+    haml :home
   end
 
   not_found do
